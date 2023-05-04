@@ -4,4 +4,6 @@ import be.technifutur.Labofinal.models.entities.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoomRepository extends JpaRepository<Room,Long> {
+
+    Room findByCinemaIdAndId(Long cinemaId,Long id);
 }

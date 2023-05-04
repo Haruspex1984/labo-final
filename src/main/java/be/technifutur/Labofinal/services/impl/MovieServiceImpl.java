@@ -62,4 +62,9 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie);
         return MovieDTO.fromEntity(movie);
     }
+
+    @Override
+    public void deleteMovie(Long id) {
+        movieRepository.deleteById(id);
+    }
 }

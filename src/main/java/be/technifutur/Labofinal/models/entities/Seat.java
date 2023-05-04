@@ -17,8 +17,9 @@ public class Seat {
     @Column(nullable = false)
     private int number;
 
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
+    @Column(nullable = false)
+    private Long roomId;
+
+
 
 }

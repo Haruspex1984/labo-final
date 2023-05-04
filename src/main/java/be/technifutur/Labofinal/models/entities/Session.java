@@ -17,9 +17,6 @@ public class Session {
     private Long id;
 
     @Column(nullable = false)
-    private double price;
-
-    @Column(nullable = false)
     private LocalDateTime dateTime;
 
     @ManyToOne

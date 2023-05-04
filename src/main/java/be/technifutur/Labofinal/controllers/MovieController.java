@@ -34,10 +34,14 @@ public class MovieController {
         return movieService.newMovie(form);
     }
 
-    @PatchMapping("/{id}/modify")
+    @PatchMapping("/{id}/update")
     public void modifyMovie(@RequestBody MovieForm form,@PathVariable Long id){
         movieService.modifyMovie(form,id);
     }
 
+    @DeleteMapping("/{id}/delete")
+    public void deleteMovie(@PathVariable Long id){
+        movieService.deleteMovie(id);
+    }
 
 }

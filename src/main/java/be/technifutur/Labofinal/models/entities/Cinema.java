@@ -25,7 +25,7 @@ public class Cinema {
     @Column(nullable = false,name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "cinema", orphanRemoval = true)
+    @OneToMany(orphanRemoval = true)
     private Set<Room> rooms = new LinkedHashSet<>();
 
 }

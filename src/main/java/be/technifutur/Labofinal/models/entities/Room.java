@@ -22,11 +22,11 @@ public class Room {
     @Column(nullable = false)
     private int capacity;
 
-    @OneToMany(mappedBy = "room")
-    private Set<Seat> seats = new LinkedHashSet<>();
+    @Column(nullable = false)
+    private Long cinemaId;
 
-    @ManyToOne
-    @JoinColumn(name = "cinema_id")
-    private Cinema cinema;
+
+    @OneToMany
+    private Set<Seat> seats = new LinkedHashSet<>();
 
 }
