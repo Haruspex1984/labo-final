@@ -4,6 +4,7 @@ import be.technifutur.Labofinal.models.DTO.SessionDTO;
 import be.technifutur.Labofinal.models.entities.Session;
 import be.technifutur.Labofinal.repositories.SessionRepository;
 import be.technifutur.Labofinal.services.SessionService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,4 +21,11 @@ public class SessionServiceImpl implements SessionService {
         Session session = sessionRepository.findAllByCinemaId(id);
         return SessionDTO.fromEntity(session);
     }
+    @Override
+    @Transactional
+    public void deleteOneByIdAndCinemaId(Long id, Long cinemaId) {
+        sessionRepository.deleteByIdAndCinemaId(id,cinemaId);
+    }
+
+
 }

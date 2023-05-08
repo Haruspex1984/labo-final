@@ -3,6 +3,8 @@ package be.technifutur.Labofinal.models.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -25,7 +27,10 @@ public class Cinema {
     @Column(nullable = false,name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(orphanRemoval = true)
+    @Column(nullable = false, name = "default_price")
+    private double defaultPrice;
+    
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE)
     private Set<Room> rooms = new LinkedHashSet<>();
 
 }

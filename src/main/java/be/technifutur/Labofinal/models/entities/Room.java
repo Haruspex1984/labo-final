@@ -25,8 +25,7 @@ public class Room {
     @Column(nullable = false)
     private Long cinemaId;
 
-
-    @OneToMany
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE)
     private Set<Seat> seats = new LinkedHashSet<>();
 
 }

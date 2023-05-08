@@ -2,10 +2,7 @@ package be.technifutur.Labofinal.controllers;
 
 import be.technifutur.Labofinal.models.DTO.SessionDTO;
 import be.technifutur.Labofinal.services.SessionService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sessions")
@@ -20,5 +17,10 @@ public class SessionController {
     @GetMapping("/{id}/all")
     public SessionDTO getAllByCinema(@PathVariable Long id){
         return sessionService.findAllByCinema(id);
+    }
+
+    @DeleteMapping("/{id}/delete")
+    public void deleteOneByIdAndCinemaId(@PathVariable Long id, @RequestParam ("cinemaId") Long cinemaId){
+        sessionService.deleteOneByIdAndCinemaId(cinemaId,id);
     }
 }

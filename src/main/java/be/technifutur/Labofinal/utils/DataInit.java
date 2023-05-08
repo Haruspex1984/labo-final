@@ -81,6 +81,7 @@ public class DataInit implements InitializingBean {
         cinema.setName("Kinépolis");
         cinema.setAddress("Liège");
         cinema.setPhoneNumber("0498284520");
+        cinema.setDefaultPrice(6.5);
 
         cinemaRepository.save(cinema);
 

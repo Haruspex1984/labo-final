@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 public class SessionDTO {
 
     private LocalDateTime dateTime;
-    private Long cinemaId;
-    private Long movieId;
+    private MovieDTO movieDTO;
     private Long roomId;
 
 
@@ -22,8 +21,7 @@ public class SessionDTO {
         }
 
         return SessionDTO.builder()
-                .cinemaId(entity.getCinema().getId())
-                .movieId(entity.getMovie().getId())
+                .movieDTO(MovieDTO.fromEntity(entity.getMovie()))
                 .roomId(entity.getRoom().getId())
                 .dateTime(entity.getDateTime())
                 .build();
