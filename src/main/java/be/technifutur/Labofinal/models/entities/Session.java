@@ -19,6 +19,8 @@ public class Session {
     @Column(nullable = false)
     private LocalDateTime dateTime;
 
+
+
     @ManyToOne
     @JoinColumn(name = "cinema_id")
     private Cinema cinema;

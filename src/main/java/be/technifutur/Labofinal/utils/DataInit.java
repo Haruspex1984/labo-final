@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,12 +21,15 @@ public class DataInit implements InitializingBean {
     private final SeatRepository seatRepository;
     private final SessionRepository sessionRepository;
 
-    public DataInit(MovieRepository movieRepository, CinemaRepository cinemaRepository, RoomRepository roomRepository, SeatRepository seatRepository, SessionRepository sessionRepository) {
+    private final UserRepository userRepository;
+
+    public DataInit(MovieRepository movieRepository, CinemaRepository cinemaRepository, RoomRepository roomRepository, SeatRepository seatRepository, SessionRepository sessionRepository, UserRepository userRepository) {
         this.movieRepository = movieRepository;
         this.cinemaRepository = cinemaRepository;
         this.roomRepository = roomRepository;
         this.seatRepository = seatRepository;
         this.sessionRepository = sessionRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -53,12 +57,14 @@ public class DataInit implements InitializingBean {
         seat.setNumber(0);
         seats.add(seat);
         seat.setRoomId(1L);
+        seat.setAvailable(true);
         seatRepository.save(seat);
 
         for (int i = 1; i < 11; i++) {
            seat = new Seat();
            seat.setNumber(i);
            seat.setRoomId(1L);
+           seat.setAvailable(true);
            seats.add(seat);
            seatRepository.save(seat);
         }
@@ -91,6 +97,22 @@ public class DataInit implements InitializingBean {
         session.setMovie(movieRepository.findById(1L).orElseThrow());
         session.setDateTime(LocalDateTime.now());
         sessionRepository.save(session);
+
+        Set<String> roles = new HashSet<>();
+        roles.add("USER");
+
+        User user = new User();
+        user.setFirstname("Benjamin");
+        user.setLastname("Renard");
+        user.setUsername("PoutreDeTerwagne69");
+        user.setPassword("123456");
+        user.setEmailAddress("b.renard84@gmail.com");
+        user.setRoles(roles);
+
+        userRepository.save(user);
+
+
+
 
 
 

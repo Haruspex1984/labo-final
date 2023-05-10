@@ -4,8 +4,9 @@ package be.technifutur.Labofinal.models.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,16 +17,18 @@ public class UserSession {
     @Column(name = "id", nullable = false)
     private Long id;
 
+
+    private double price;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
-
-    @ManyToOne
     @JoinColumn(name = "session_id")
     private Session session;
+
+    @OneToMany(orphanRemoval = true)
+    private Set<Seat> seats = new LinkedHashSet<>();
 
 }

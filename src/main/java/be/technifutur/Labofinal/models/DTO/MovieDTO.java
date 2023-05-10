@@ -37,7 +37,5 @@ public class MovieDTO {
                 .isImax(entity.isImax())
                 .releaseDate(entity.getReleaseDate())
                 .build();
-
     }
-
 }

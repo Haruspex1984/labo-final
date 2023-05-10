@@ -64,7 +64,14 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List<MovieDTO> findAllbyCinema(Long cinemaId) {
+        return movieRepository.findMoviesByCinemaId(cinemaId).stream().map(MovieDTO::fromEntity).toList();
+    }
+
+    @Override
     public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
     }
+
+
 }

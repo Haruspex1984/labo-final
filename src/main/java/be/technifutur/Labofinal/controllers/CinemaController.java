@@ -21,6 +21,10 @@ public class CinemaController {
         return cinemaService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public CinemaDTO getOne(@PathVariable Long id){
+        return cinemaService.getOne(id);
+    }
 
     @DeleteMapping("/{id}/delete")
     public void deleteMovie(@PathVariable Long id){

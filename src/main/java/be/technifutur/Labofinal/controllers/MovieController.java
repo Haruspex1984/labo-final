@@ -44,4 +44,8 @@ public class MovieController {
         movieService.deleteMovie(id);
     }
 
+    @GetMapping("/{cinemaId}/movies")
+    public List<MovieDTO> findMoviesByCinema(@PathVariable Long cinemaId){
+        return movieService.findAllbyCinema(cinemaId);
+    }
 }

@@ -11,5 +11,7 @@ public interface MovieService {
     Optional<MovieDTO> getOne(Long id);
     MovieDTO newMovie(MovieForm form);
     MovieDTO modifyMovie(MovieForm form, Long id);
+
+    List<MovieDTO> findAllbyCinema(Long cinemaId);
     void deleteMovie(Long id);
 }

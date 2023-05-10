@@ -18,6 +18,9 @@ public class Seat {
     private int number;
 
     @Column(nullable = false)
+    private boolean available;
+
+    @Column(nullable = false)
     private Long roomId;
 
 

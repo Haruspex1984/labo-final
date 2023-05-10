@@ -14,9 +14,9 @@ public class SessionController {
         this.sessionService = sessionService;
     }
 
-    @GetMapping("/{id}/all")
-    public SessionDTO getAllByCinema(@PathVariable Long id){
-        return sessionService.findAllByCinema(id);
+    @GetMapping("/{cinemaId}/all")
+    public SessionDTO getAllByCinema(@PathVariable Long cinemaId){
+        return sessionService.findAllByCinema(cinemaId);
     }
 
     @DeleteMapping("/{id}/delete")
