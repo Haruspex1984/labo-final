@@ -1,6 +1,7 @@
 package be.technifutur.Labofinal.controllers;
 
 import be.technifutur.Labofinal.models.DTO.CinemaDTO;
+import be.technifutur.Labofinal.models.forms.CinemaForm;
 import be.technifutur.Labofinal.services.CinemaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,4 +32,8 @@ public class CinemaController {
         cinemaService.deleteCinema(id);
     }
 
+    @PostMapping("/new")
+    public CinemaDTO newCinema(@RequestBody CinemaForm form){
+        return cinemaService.newCinema(form);
+    }
 }

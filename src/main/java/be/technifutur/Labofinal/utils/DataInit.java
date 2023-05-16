@@ -60,7 +60,7 @@ public class DataInit implements InitializingBean {
         seat.setAvailable(true);
         seatRepository.save(seat);
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 10; i++) {
            seat = new Seat();
            seat.setNumber(i);
            seat.setRoomId(1L);
@@ -68,7 +68,6 @@ public class DataInit implements InitializingBean {
            seats.add(seat);
            seatRepository.save(seat);
         }
-
 
 
         Room room = new Room();

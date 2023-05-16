@@ -14,7 +14,6 @@ import java.util.Set;
 public class UserSessionForm {
 
 
-
     private String username;
 
     private Long sessionId;
@@ -22,8 +21,7 @@ public class UserSessionForm {
     private int seatsQuantity;
 
 
-    public UserSession toEntity(){
-        UserSession userSession = new UserSession();
-        return userSession;
+    public UserSession toEntity() {
+        return new UserSession();
     }
 }
