@@ -3,10 +3,10 @@ package be.technifutur.Labofinal.models.forms;
 import be.technifutur.Labofinal.models.entities.Genre;
 import be.technifutur.Labofinal.models.entities.Movie;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,6 +20,7 @@ public class MovieForm {
     private String director;
 
     @NotNull
+    @Positive
     private int length;
 
     private boolean isAdultsOnly;

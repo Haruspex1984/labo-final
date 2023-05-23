@@ -4,6 +4,8 @@ package be.technifutur.Labofinal.utils;
 import be.technifutur.Labofinal.models.entities.*;
 import be.technifutur.Labofinal.repositories.*;
 import org.springframework.beans.factory.InitializingBean;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -20,20 +22,24 @@ public class DataInit implements InitializingBean {
     private final RoomRepository roomRepository;
     private final SeatRepository seatRepository;
     private final SessionRepository sessionRepository;
-
     private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
-    public DataInit(MovieRepository movieRepository, CinemaRepository cinemaRepository, RoomRepository roomRepository, SeatRepository seatRepository, SessionRepository sessionRepository, UserRepository userRepository) {
+
+    public DataInit(MovieRepository movieRepository, CinemaRepository cinemaRepository, RoomRepository roomRepository, SeatRepository seatRepository, SessionRepository sessionRepository, UserRepository userRepository, PasswordEncoder encoder) {
         this.movieRepository = movieRepository;
         this.cinemaRepository = cinemaRepository;
         this.roomRepository = roomRepository;
         this.seatRepository = seatRepository;
         this.sessionRepository = sessionRepository;
         this.userRepository = userRepository;
+
+        this.encoder = encoder;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
+
 
         Movie movie = new Movie();
         Set<Genre> genres = new LinkedHashSet<>();
@@ -44,7 +50,7 @@ public class DataInit implements InitializingBean {
         movie.setAdultsOnly(false);
 
         genres.add(Genre.ROMANCE);
-        genres.add(Genre.HISTORY);
+        genres.add(Genre.HISTORIC);
         movie.setGenres(genres);
         movie.setLength(180);
         movie.setReleaseDate(LocalDate.of(1998, 1, 7));
@@ -61,12 +67,12 @@ public class DataInit implements InitializingBean {
         seatRepository.save(seat);
 
         for (int i = 1; i < 10; i++) {
-           seat = new Seat();
-           seat.setNumber(i);
-           seat.setRoomId(1L);
-           seat.setAvailable(true);
-           seats.add(seat);
-           seatRepository.save(seat);
+            seat = new Seat();
+            seat.setNumber(i);
+            seat.setRoomId(1L);
+            seat.setAvailable(true);
+            seats.add(seat);
+            seatRepository.save(seat);
         }
 
 
@@ -92,27 +98,24 @@ public class DataInit implements InitializingBean {
 
         Session session = new Session();
         session.setCinema(cinemaRepository.findById(1L).orElseThrow());
-        session.setRoom(roomRepository.findByCinemaIdAndId(1L,1L));
+        session.setRoom(roomRepository.findByCinemaIdAndId(1L, 1L));
         session.setMovie(movieRepository.findById(1L).orElseThrow());
         session.setDateTime(LocalDateTime.now());
+        session.setRemainingSeats(session.getRoom().getCapacity());
         sessionRepository.save(session);
 
         Set<String> roles = new HashSet<>();
-        roles.add("USER");
+        roles.add("ADMIN");
 
         User user = new User();
         user.setFirstname("Benjamin");
         user.setLastname("Renard");
-        user.setUsername("PoutreDeTerwagne69");
-        user.setPassword("123456");
+        user.setUsername("user");
+        user.setPassword(encoder.encode("pass"));
         user.setEmailAddress("b.renard84@gmail.com");
         user.setRoles(roles);
 
         userRepository.save(user);
-
-
-
-
 
 
     }

@@ -4,6 +4,7 @@ package be.technifutur.Labofinal.controllers;
 import be.technifutur.Labofinal.models.DTO.MovieDTO;
 import be.technifutur.Labofinal.models.forms.MovieForm;
 import be.technifutur.Labofinal.services.MovieService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class MovieController {
     }
 
     @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
     public MovieDTO newMovie(@RequestBody MovieForm form){
         return movieService.newMovie(form);
     }

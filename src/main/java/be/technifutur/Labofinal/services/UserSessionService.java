@@ -5,6 +5,6 @@ import be.technifutur.Labofinal.models.forms.UserSessionForm;
 
 public interface UserSessionService {
 
-    UserSessionDTO newUserSessionDTO(UserSessionForm form);
+    UserSessionDTO newUserSession(UserSessionForm form);
 
 }

@@ -19,7 +19,8 @@ public class Session {
     @Column(nullable = false)
     private LocalDateTime dateTime;
 
-
+    @Column(nullable = false)
+    private int remainingSeats;
 
     @ManyToOne
     @JoinColumn(name = "cinema_id")

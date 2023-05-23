@@ -17,6 +17,7 @@ public class SessionDTO {
     private int remainingSeats;
 
 
+
     public static SessionDTO fromEntity(Session entity){
         if(entity == null){
             return null;
@@ -27,6 +28,7 @@ public class SessionDTO {
                 .roomNumber(entity.getRoom().getNumber())
                 .dateTime(entity.getDateTime())
                 .cinemaId(entity.getCinema().getId())
+                .remainingSeats(entity.getRemainingSeats())
                 .build();
     }
 }
