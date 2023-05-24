@@ -7,6 +7,7 @@ import be.technifutur.Labofinal.utils.JWTProvider;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,8 @@ public class UserController {
 
 
     @PatchMapping("/{username}/update")
-    public UserDTO updateUser(@RequestBody UserForm form, @PathVariable String username, HttpServletRequest request) throws Exception {
-        return userService.updateUser(username, form, request);
+    public UserDTO updateUser(Authentication auth, @RequestBody UserForm form, @PathVariable String username) throws Exception {
+        return userService.updateUser(username, form, auth);
     }
 }
 

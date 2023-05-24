@@ -47,6 +47,7 @@ private final CinemaRepository cinemaRepository;
         cinema.setAddress(form.getAddress());
         cinema.setDefaultPrice(form.getDefaultPrice());
         cinema.setPhoneNumber(form.getPhoneNumber());
+        cinema.setImageURL(form.getImageURL());
         cinemaRepository.save(cinema);
         return CinemaDTO.fromEntity(cinema);
     }

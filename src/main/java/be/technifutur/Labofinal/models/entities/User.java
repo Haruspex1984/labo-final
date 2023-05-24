@@ -1,6 +1,7 @@
 package be.technifutur.Labofinal.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,7 +24,7 @@ public class User implements UserDetails {
     @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -35,10 +36,10 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String lastname;
 
-    @Column(nullable = false,name = "email")
+    @Column(nullable = false,name = "email",unique = true)
     private String emailAddress;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number",unique = true)
     private String phoneNumber;
 
     @ElementCollection(fetch = FetchType.EAGER)

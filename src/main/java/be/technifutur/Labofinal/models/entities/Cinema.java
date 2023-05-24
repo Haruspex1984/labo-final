@@ -22,6 +22,10 @@ public class Cinema {
     private String name;
 
     @Column(nullable = false)
+    private String imageURL;
+
+
+    @Column(nullable = false)
     private String address;
 
     @Column(nullable = false,name = "phone_number",unique = true)

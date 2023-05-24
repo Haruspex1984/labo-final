@@ -39,7 +39,6 @@ public class WebSecurityConfig {
 
         http.cors();
 
-
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -49,7 +48,10 @@ public class WebSecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/user-session/**").authenticated()
                     .requestMatchers(HttpMethod.PATCH,"/user/{username}/update").authenticated()
                     .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/auth/register").anonymous();
+                    .requestMatchers(HttpMethod.POST,"/auth/register").anonymous()
+                    .requestMatchers(HttpMethod.POST,"/cinemas/new").authenticated()
+                    .requestMatchers(HttpMethod.POST,"/rooms/new").authenticated();
+
         });
         return http.build();
     }

@@ -13,6 +13,7 @@ public class CinemaDTO {
     private String phoneNumber;
     private double defaultPrice;
     private int roomsQuantity;
+    private String imageURL;
 
     public static CinemaDTO fromEntity(Cinema entity){
         if(entity == null){
@@ -25,6 +26,7 @@ public class CinemaDTO {
                 .defaultPrice(entity.getDefaultPrice())
                 .phoneNumber(entity.getPhoneNumber())
                 .roomsQuantity(entity.getRooms().size())
+                .imageURL(entity.getImageURL())
                 .build();
 
     }

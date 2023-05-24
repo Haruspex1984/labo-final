@@ -93,6 +93,7 @@ public class DataInit implements InitializingBean {
         cinema.setAddress("Liège");
         cinema.setPhoneNumber("0498284520");
         cinema.setDefaultPrice(6.5);
+        cinema.setImageURL("https://www.francebleu.fr/s3/cruiser-production/2020/12/ec98151a-c089-4030-ae79-2a9f43031aa1/1200x680_index.jpg");
 
         cinemaRepository.save(cinema);
 
