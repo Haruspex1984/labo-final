@@ -26,6 +26,9 @@ public class Movie {
     private String director;
 
     @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
     private int length;
 
     @Column(nullable = false)

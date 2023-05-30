@@ -11,8 +11,10 @@ import java.util.Set;
 @Builder
 public class MovieDTO {
 
+    private Long id;
     private String title;
     private String director;
+    private String description;
     private int length;
     private boolean isAdultOnly;
     private boolean isImax;
@@ -28,6 +30,8 @@ public class MovieDTO {
         }
 
         return MovieDTO.builder()
+                .id(entity.getId())
+                .description(entity.getDescription())
                 .title(entity.getTitle())
                 .director(entity.getDirector())
                 .length(entity.getLength())

@@ -2,6 +2,7 @@ package be.technifutur.Labofinal.models.forms;
 
 import be.technifutur.Labofinal.models.entities.Genre;
 import be.technifutur.Labofinal.models.entities.Movie;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -19,7 +20,9 @@ public class MovieForm {
     @NotNull
     private String director;
 
-    @NotNull
+    @NotBlank
+    private String description;
+
     @Positive
     private int length;
 
@@ -41,6 +44,7 @@ public class MovieForm {
         Movie movie = new Movie();
         movie.setTitle(title);
         movie.setDirector(director);
+        movie.setDescription(description);
         movie.setLength(length);
         movie.setAdultsOnly(isAdultsOnly);
         movie.setImax(isImax);

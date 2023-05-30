@@ -1,4 +1,4 @@
-package be.technifutur.Labofinal;
+package be.technifutur.Labofinal.utils.exceptions;
 
 public class InvalidUsernameException extends RuntimeException{
 

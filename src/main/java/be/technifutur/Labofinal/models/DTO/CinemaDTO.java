@@ -9,6 +9,7 @@ import lombok.Data;
 public class CinemaDTO {
 
     private String name;
+    private Long id;
     private String address;
     private String phoneNumber;
     private double defaultPrice;
@@ -22,6 +23,7 @@ public class CinemaDTO {
 
         return CinemaDTO.builder()
                 .name(entity.getName())
+                .id(entity.getId())
                 .address(entity.getAddress())
                 .defaultPrice(entity.getDefaultPrice())
                 .phoneNumber(entity.getPhoneNumber())

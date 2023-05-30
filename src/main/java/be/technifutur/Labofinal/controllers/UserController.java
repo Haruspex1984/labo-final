@@ -1,17 +1,13 @@
 package be.technifutur.Labofinal.controllers;
-
 import be.technifutur.Labofinal.models.DTO.UserDTO;
 import be.technifutur.Labofinal.models.forms.UserForm;
 import be.technifutur.Labofinal.services.UserService;
 import be.technifutur.Labofinal.utils.JWTProvider;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.DecodedJWT;
+
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -19,12 +15,19 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private final JWTProvider jwt;
 
-    public UserController(UserService userService, JWTProvider jwt, HttpServletRequest http, JWTProvider jwt1) {
+
+    public UserController(UserService userService, JWTProvider jwt, HttpServletRequest http) {
         this.userService = userService;
-        this.jwt = jwt1;
     }
+
+    @GetMapping("/{username}")
+    public UserDTO getOneByUsername(@PathVariable String username) throws Exception {
+            return userService.findOneByUsername(username);
+
+    }
+
+
 
 
     @PatchMapping("/{username}/update")

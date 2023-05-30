@@ -5,6 +5,8 @@ import be.technifutur.Labofinal.models.DTO.UserDTO;
 import be.technifutur.Labofinal.models.forms.LoginForm;
 import be.technifutur.Labofinal.models.forms.RegisterForm;
 import be.technifutur.Labofinal.services.AuthService;
+import be.technifutur.Labofinal.utils.exceptions.InvalidCredentialsException;
+import be.technifutur.Labofinal.utils.exceptions.UsernameAlreadyExistsException;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +23,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthDTO login(@RequestBody @Valid LoginForm form) {
+    public AuthDTO login(@RequestBody @Valid LoginForm form) throws InvalidCredentialsException {
         return authService.login(form);
     }
 
     @PostMapping("/register")
-    private UserDTO register(@RequestBody @Valid RegisterForm form) {
+    private UserDTO register(@RequestBody @Valid RegisterForm form) throws UsernameAlreadyExistsException{
         return authService.register(form);
     }
 

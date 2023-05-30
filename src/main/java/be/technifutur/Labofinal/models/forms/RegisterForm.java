@@ -1,7 +1,7 @@
 package be.technifutur.Labofinal.models.forms;
-
 import be.technifutur.Labofinal.models.entities.User;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data

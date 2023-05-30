@@ -19,6 +19,8 @@ public class SessionController {
         return sessionService.findAllByCinema(cinemaId);
     }
 
+
+
     @DeleteMapping("/{id}/delete")
     public void deleteOneByIdAndCinemaId(@PathVariable Long id, @RequestParam ("cinemaId") Long cinemaId){
         sessionService.deleteOneByIdAndCinemaId(cinemaId,id);

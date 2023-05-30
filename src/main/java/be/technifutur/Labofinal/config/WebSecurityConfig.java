@@ -45,6 +45,7 @@ public class WebSecurityConfig {
 
         http.authorizeHttpRequests(registry -> {
             registry.requestMatchers(HttpMethod.GET).permitAll()
+                    .requestMatchers(HttpMethod.GET,"/user/{username}").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/user-session/**").authenticated()
                     .requestMatchers(HttpMethod.PATCH,"/user/{username}/update").authenticated()
                     .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()

@@ -46,6 +46,7 @@ public class DataInit implements InitializingBean {
 
         movie.setTitle("Titanic");
         movie.setDirector("James Cameron");
+        movie.setDescription("Une aristocrate de dix-sept ans tombe amoureuse d'un artiste pauvre au grand coeur à bord du luxueux Titanic.");
         movie.setImax(false);
         movie.setAdultsOnly(false);
 
@@ -90,7 +91,7 @@ public class DataInit implements InitializingBean {
         Cinema cinema = new Cinema();
         cinema.setRooms(rooms);
         cinema.setName("Kinépolis");
-        cinema.setAddress("Liège");
+        cinema.setAddress("Rue du palais 10, 4000 Liège");
         cinema.setPhoneNumber("0498284520");
         cinema.setDefaultPrice(6.5);
         cinema.setImageURL("https://www.francebleu.fr/s3/cruiser-production/2020/12/ec98151a-c089-4030-ae79-2a9f43031aa1/1200x680_index.jpg");
@@ -107,6 +108,7 @@ public class DataInit implements InitializingBean {
 
         Set<String> roles = new HashSet<>();
         roles.add("ADMIN");
+        roles.add("USER");
 
         User user = new User();
         user.setFirstname("Benjamin");
@@ -114,6 +116,18 @@ public class DataInit implements InitializingBean {
         user.setUsername("user");
         user.setPassword(encoder.encode("pass"));
         user.setEmailAddress("b.renard84@gmail.com");
+        user.setRoles(roles);
+
+        userRepository.save(user);
+
+        roles = new HashSet<>();
+        roles.add("USER");
+        user = new User();
+        user.setFirstname("Olivia");
+        user.setLastname("Wolff");
+        user.setUsername("user2");
+        user.setPassword(encoder.encode("pass"));
+        user.setEmailAddress("lilouwolff@gmail.com");
         user.setRoles(roles);
 
         userRepository.save(user);

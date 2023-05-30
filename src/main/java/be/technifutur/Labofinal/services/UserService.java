@@ -7,5 +7,8 @@ import org.springframework.security.core.Authentication;
 
 public interface UserService {
 
+    UserDTO findOneByUsername(String username) throws Exception;
     UserDTO updateUser(String username, UserForm form, Authentication authentication) throws Exception;
 }
+
+

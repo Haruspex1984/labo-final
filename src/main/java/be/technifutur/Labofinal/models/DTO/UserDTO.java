@@ -3,6 +3,8 @@ import be.technifutur.Labofinal.models.entities.User;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Builder
 public class UserDTO {
@@ -12,6 +14,7 @@ public class UserDTO {
     private String username;
     private String phoneNumber;
     private String email;
+    private Set<String> roles;
 
     public static UserDTO fromEntity(User entity){
         if(entity == null){
@@ -23,6 +26,7 @@ public class UserDTO {
                 .username(entity.getUsername())
                 .phoneNumber(entity.getPhoneNumber())
                 .email(entity.getEmailAddress())
+                .roles(entity.getRoles())
                 .build();
     }
 }

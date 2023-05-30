@@ -32,7 +32,7 @@ public class UserSessionServiceImpl implements UserSessionService {
         UserSession userSession = form.toEntity();
         userSession.setSession(sessionRepository.findById(form.getSessionId()).orElseThrow());
         Session session = userSession.getSession();
-        userSession.setUser(userRepository.findByUsername(form.getUsername()).orElseThrow());
+        userSession.setUser(userRepository.findByUsername(form.getUsername()));
         userSession.setPrice(
                 form.getSeatsQuantity() * userSession.getSession().getCinema().getDefaultPrice()
         );
