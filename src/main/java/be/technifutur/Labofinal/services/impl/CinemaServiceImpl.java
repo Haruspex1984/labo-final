@@ -16,6 +16,7 @@ public class CinemaServiceImpl implements CinemaService {
 
 private final CinemaRepository cinemaRepository;
 
+
     public CinemaServiceImpl(CinemaRepository cinemaRepository) {
         this.cinemaRepository = cinemaRepository;
     }
@@ -51,6 +52,4 @@ private final CinemaRepository cinemaRepository;
         cinemaRepository.save(cinema);
         return CinemaDTO.fromEntity(cinema);
     }
-
-
 }

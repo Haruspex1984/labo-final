@@ -4,8 +4,11 @@ import be.technifutur.Labofinal.models.DTO.SessionDTO;
 import be.technifutur.Labofinal.services.SessionService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sessions")
+@CrossOrigin("*")
 public class SessionController {
 
     private final SessionService sessionService;
@@ -14,9 +17,14 @@ public class SessionController {
         this.sessionService = sessionService;
     }
 
-    @GetMapping("/{cinemaId}/all")
-    public SessionDTO getAllByCinema(@PathVariable Long cinemaId){
+    @GetMapping("/cinema/{cinemaId}/all")
+    public List<SessionDTO>getAllByCinema(@PathVariable Long cinemaId){
         return sessionService.findAllByCinema(cinemaId);
+    }
+
+    @GetMapping("/movie/{movieId}/all")
+    public List<SessionDTO>getAllByMovie(@PathVariable Long movieId){
+        return sessionService.findAllByMovie(movieId);
     }
 
 

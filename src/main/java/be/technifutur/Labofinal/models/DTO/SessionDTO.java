@@ -13,7 +13,7 @@ public class SessionDTO {
     private LocalDateTime dateTime;
     private MovieDTO movieDTO;
     private int roomNumber;
-    private Long cinemaId;
+    private CinemaDTO cinemaDTO;
     private int remainingSeats;
 
 
@@ -25,9 +25,9 @@ public class SessionDTO {
 
         return SessionDTO.builder()
                 .movieDTO(MovieDTO.fromEntity(entity.getMovie()))
+                .cinemaDTO(CinemaDTO.fromEntity(entity.getCinema()))
                 .roomNumber(entity.getRoom().getNumber())
                 .dateTime(entity.getDateTime())
-                .cinemaId(entity.getCinema().getId())
                 .remainingSeats(entity.getRemainingSeats())
                 .build();
     }

@@ -27,9 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findOneByUsername(String username) {
-
         return UserDTO.fromEntity(userRepository.findByUsername(username));
-
     }
 
     @Override

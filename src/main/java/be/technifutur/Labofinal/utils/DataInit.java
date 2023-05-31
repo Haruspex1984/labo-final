@@ -58,6 +58,21 @@ public class DataInit implements InitializingBean {
         movie.setImageURL("https://barrettjacksoncdn.azureedge.net/staging/carlist/items/Fullsize/Automobilia/46452/46452_Auto_Front_3-4_Web.jpg");
         movieRepository.save(movie);
 
+
+        movie = new Movie();
+        genres = new LinkedHashSet<>();
+        movie.setTitle("Dérives sexuelles dans l'immobilier");
+        movie.setDescription("Charlotte et Julie ont vraiment besoin de cet appartement, mais elles n'ont pas les fonds nécessaires pour la caution. Le propriétaire se montrera-t-il clément ?");
+        movie.setDirector("John B. Root");
+        movie.setImax(false);
+        movie.setAdultsOnly(true);
+        genres.add(Genre.ROMANCE);
+        movie.setGenres(genres);
+        movie.setLength(120);
+        movie.setReleaseDate(LocalDate.of(2012,6,20));
+        movie.setImageURL("https://www.mypornhere.com/contents/videos_screenshots/48000/48303/preview.jpg");
+        movieRepository.save(movie);
+
         Seat seat = new Seat();
         Set<Seat> seats = new LinkedHashSet<>();
 
