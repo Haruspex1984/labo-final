@@ -57,6 +57,11 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserDTO register(RegisterForm form) throws UsernameAlreadyExistsException {
+
+        if( userRepository.existsByUsername(form.getUsername()) )
+            throw new UsernameAlreadyExistsException();
+
+
         try {
             User user = new User();
             user.setUsername(form.getUsername());
